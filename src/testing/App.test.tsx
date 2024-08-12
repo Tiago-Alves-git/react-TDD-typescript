@@ -9,7 +9,7 @@ describe('Testa o componente AppBar', () => {
     'Testa se existe uma barra no topo da aplicação',
     () => {
       renderWithRouter(<NavBar />);
-      const menuItem = screen.getByRole('Button', {name: /menu/i});
+      const menuItem = screen.getByRole('button', {name: /menu/i});
       expect(menuItem).toBeInTheDocument();
     },
   );
