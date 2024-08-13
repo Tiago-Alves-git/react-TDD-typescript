@@ -28,8 +28,20 @@ export class NavBar extends Component {
               <img src={Logo} aria-label='logo' width='50px' height='50px' style={{ borderRadius: '50px' }}></img>
             </IconButton>
             <Box>
-            <Button color='inherit' aria-label='loginButton'> Login </Button>
-            <Button color='inherit' aria-label='SignUp'> SignUp </Button>
+            <Button color='inherit' aria-label='loginButton'
+            onClick={() => {
+              console.log('i work!')
+            }}
+            > 
+            Login 
+            </Button>
+            <Button color='inherit' aria-label='SignUp'
+            onClick={() => {
+              console.log('i work!')
+            }}
+            > 
+            SignUp
+            </Button>
             </Box>
           </Toolbar>
           <Toolbar sx={{ display: 'flex', justifyContent: 'flex-start', gap: '20px', marginLeft: '9vw', marginTop: '10vh' }}>
