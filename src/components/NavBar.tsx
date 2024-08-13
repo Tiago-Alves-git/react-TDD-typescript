@@ -12,25 +12,24 @@ export class NavBar extends Component {
   render() {
     return (
       <Box sx={{ flexGrow: 1 }}>
-        <AppBar position='static'>
-          <Toolbar>
+        <AppBar position='static' sx={{ height: '30vh' }}>
+          <Toolbar sx={{ display: 'flex', justifyContent: 'space-around' }}>
             <IconButton
-            size='large'
-            edge='start'
-            color='inherit'
-            aria-label='menu'
-            sx={{ mr: 2 }}
-            >
-              <MenuIcon />
-            </IconButton>
-            <IconButton
+            type='button'
             size='large'
             color='inherit'
             aria-label='logo'
-            sx={{ flexGrow: 1 }}>
+            sx={{ display: 'flex' }}
+            >
               <img src={Logo} aria-label='logo' width='50px' height='50px' style={{ borderRadius: '50px' }}></img>
             </IconButton>
             <Button color='inherit' aria-label='loginButton'> Login </Button>
+            <Button color='inherit' aria-label='SignUp'> SignUp </Button>
+          </Toolbar>
+          <Toolbar>
+            <IconButton type='button' aria-label='categoryHosting'></IconButton>
+            <IconButton type='button' aria-label='categoryBooking'></IconButton>
+            <IconButton type='button' aria-label='categoryFlights'></IconButton>
           </Toolbar>
         </AppBar>
       </Box>
