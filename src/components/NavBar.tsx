@@ -11,9 +11,13 @@ import HotelIcon from '@mui/icons-material/Hotel';
 import BookOnlineIcon from '@mui/icons-material/BookOnline';
 import AirplaneTicketIcon from '@mui/icons-material/AirplaneTicket';
 import { Link } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
-export class NavBar extends Component {
-  render() {
+
+const NavBar = () => {
+
+const navigate = useNavigate();
+
     return (
       <Box sx={{ flexGrow: 1 }}>
         <AppBar position='static' sx={{ height: '30vh' }}>
@@ -30,7 +34,7 @@ export class NavBar extends Component {
             <Box>
             <Button color='inherit' aria-label='loginButton'
             onClick={() => {
-              console.log('i work!')
+              navigate('/login');
             }}
             > 
             Login 
@@ -98,6 +102,5 @@ export class NavBar extends Component {
       </Box>
     )
   }
-}
 
 export default NavBar

@@ -1,8 +1,11 @@
 import React from 'react';
-import { screen, act } from '@testing-library/react';
+import { screen, act, render, getByRole } from '@testing-library/react';
 import renderWithRouter from '../renderWithRouter';
 import App from '../App';
 import NavBar from '../components/NavBar';
+import { createMemoryRouter, RouterProvider } from 'react-router-dom';
+import userEvent from '@testing-library/user-event';
+
 
 describe('Testa o componente AppBar', () => {
   it(
@@ -29,7 +32,20 @@ describe('Testa o componente AppBar', () => {
   },
 );
   it('testa se os botões de login e cadastro redirecionam o usuario para o link correto', () => {
-    renderWithRouter(<NavBar />);
+    // Criando um histórico de rotas
+     const router = createMemoryRouter([{ path: '/', element: <NavBar /> }]);
+    // Renderizando o componente com o Router
+    render(
+      <RouterProvider router={router} />
+  );
+    //Selecionar os botoes para teste
+    const loginButton = screen.getByRole('button', {name: /loginButton/i});
+    const signUp = screen.getByRole('button', {name: /signUp/i });
+    //Simular os clicks nos botões
+    userEvent.click(loginButton);
+    expect(router.state.location.pathname).toBe('/login ');
+    userEvent.click(signUp);
+    expect(router.state.location.pathname).toBe('/signUp')
 },
 );
 });
