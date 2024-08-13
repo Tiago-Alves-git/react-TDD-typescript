@@ -28,4 +28,8 @@ describe('Testa o componente AppBar', () => {
     expect(categoryBooking && categoryFlights && categoryHosting).toBeInTheDocument();
   },
 );
+  it('testa se os botões de login e cadastro redirecionam o usuario para o link correto', () => {
+    renderWithRouter(<NavBar />);
+},
+);
 });
