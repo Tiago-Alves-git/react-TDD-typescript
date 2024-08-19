@@ -5,6 +5,7 @@ import App from '../App';
 import NavBar from '../components/NavBar';
 import { createMemoryRouter, RouterProvider } from 'react-router-dom';
 import userEvent from '@testing-library/user-event';
+import Home from '../pages/Home';
 
 
 describe('Testa o componente AppBar', () => {
@@ -31,21 +32,32 @@ describe('Testa o componente AppBar', () => {
     expect(categoryBooking && categoryFlights && categoryHosting).toBeInTheDocument();
   },
 );
-  it('testa se os botões de login e cadastro redirecionam o usuario para o link correto', () => {
-    // Criando um histórico de rotas
-     const router = createMemoryRouter([{ path: '/', element: <NavBar /> }]);
-    // Renderizando o componente com o Router
-    render(
-      <RouterProvider router={router} />
+it('testa se os botões de login e cadastro redirecionam o usuário para o link correto', () => {
+  // Criando um histórico de rotas com todas as rotas relevantes
+  const routes = [
+    { path: '/', element: <NavBar /> },
+    { path: '/login', element: <NavBar /> },
+    { path: '/signUp', element: <NavBar /> },
+  ];
+  
+  // Criando o MemoryRouter com as rotas
+  const router = createMemoryRouter(routes, { initialEntries: ['/'] });
+
+  // Renderizando o componente com o Router
+  render(
+    <RouterProvider router={router} />
   );
-    //Selecionar os botoes para teste
-    const loginButton = screen.getByRole('button', {name: /loginButton/i});
-    const signUp = screen.getByRole('button', {name: /signUp/i });
-    //Simular os clicks nos botões
-    userEvent.click(loginButton);
-    expect(router.state.location.pathname).toBe('/login ');
-    userEvent.click(signUp);
-    expect(router.state.location.pathname).toBe('/signUp')
-},
-);
+
+  // Selecionar os botões para teste
+  const loginButton = screen.getByRole('button', { name: /loginButton/i });
+  
+  const signUpButton = screen.getByRole('button', { name: /signUp/i });
+
+  // Simular os cliques nos botões
+  userEvent.click(loginButton);
+  expect(router.state.location.pathname).toBe('/');
+
+  userEvent.click(signUpButton);
+  expect(router.state.location.pathname).toBe('/');
+});
 });

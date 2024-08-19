@@ -5,12 +5,10 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
 import Logo from '../assets/logos/beijaFlor.jpeg';
 import HotelIcon from '@mui/icons-material/Hotel';
 import BookOnlineIcon from '@mui/icons-material/BookOnline';
 import AirplaneTicketIcon from '@mui/icons-material/AirplaneTicket';
-import { Link } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -41,7 +39,7 @@ const navigate = useNavigate();
             </Button>
             <Button color='inherit' aria-label='SignUp'
             onClick={() => {
-              console.log('i work!')
+              navigate('/signUp');
             }}
             > 
             SignUp
